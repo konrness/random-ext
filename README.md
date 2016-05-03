@@ -1,7 +1,7 @@
 random-ext
 ==========
 
-A library of extensions for ircmaxell/RandomLIb, which can generate random numbers and strings of various strengths.
+A library of extensions for ircmaxell/RandomLib, which can generate random numbers and strings of various strengths.
 
 This library is for fun, and not to be used in security contexts.
 
