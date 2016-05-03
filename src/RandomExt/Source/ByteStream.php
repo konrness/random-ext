@@ -19,22 +19,12 @@ abstract class ByteStream implements \RandomLib\Source
      *
      * @var resource
      */
-    private static $fp;
+    private $fp;
 
     /**
      * @return string
      */
     abstract protected function getPath();
-
-    /**
-     * Return an instance of Strength indicating the strength of the source
-     *
-     * @return Strength An instance of one of the strength classes
-     */
-    public static function getStrength()
-    {
-        return new Strength(Strength::MEDIUM);
-    }
 
     /**
      * Generate a random string of the specified size
@@ -46,7 +36,7 @@ abstract class ByteStream implements \RandomLib\Source
     {
         $file = $this->getStream();
 
-        if (!$file) {
+        if (false === $file) {
             return str_repeat(chr(0), $size);
         }
 
@@ -62,11 +52,11 @@ abstract class ByteStream implements \RandomLib\Source
      */
     protected function getStream()
     {
-        if (! self::$fp) {
-            self::$fp = fopen($this->getPath(), 'rb');
+        if (! $this->fp) {
+            $this->fp = @fopen($this->getPath(), 'rb');
         }
 
-        return self::$fp;
+        return $this->fp;
     }
 
     /**
@@ -74,9 +64,9 @@ abstract class ByteStream implements \RandomLib\Source
      */
     public function __destruct()
     {
-        if (self::$fp) {
-            fclose(self::$fp);
-            self::$fp = null;
+        if ($this->fp) {
+            fclose($this->fp);
+            $this->fp = null;
         }
     }
 
