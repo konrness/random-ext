@@ -1,0 +1,20 @@
+{
+    "name": "kness/issue39",
+    "authors": [
+        {
+            "name": "Konr Ness",
+            "email": "kness@nerdery.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit" : "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "RandomExt\\": "src/RandomExt/"
+        }
+    },
+    "require": {
+        "ircmaxell/random-lib": "^1.1"
+    }
+}
